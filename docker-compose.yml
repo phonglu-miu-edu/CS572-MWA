@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+    mongo:
+        image: mongo
+        container_name: cs572-mwa-mongo
+        ports:
+            - 27017:27017
+        command: mongod
+        networks:
+            - cs572_mwa_network
+
+#    backend:
+#        build:
+#            context: backend
+#            dockerfile: Dockerfile
+#        depends_on:
+#            - mongo
+#        networks:
+#            - cs572_mwa_network
+
+    frontend:
+        build:
+            context: frontend
+            dockerfile: Dockerfile
+#        depends_on:
+#            - backend
+        networks:
+            - cs572_mwa_network
+
+networks:
+    cs572_mwa_network:
