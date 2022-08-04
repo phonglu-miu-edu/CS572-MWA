@@ -9,7 +9,7 @@ The HoRa project is a grand betting system opened to let people bet on the horse
 1. Authentication system (fixed users)
 
 2. The admin functionalities:
- - Create races with a number of horses and set the running for them.
+ - Create races with a number of horses and set the running time for them.
  - Manage the history of races and the betting.
  - Review all the races in realtime.
  - Report of the income from races.
