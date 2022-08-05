@@ -1,0 +1,17 @@
+### Login admin
+POST http://localhost/auth/login
+Content-Type: application/json
+
+{
+    "username": "admin",
+    "password": "MyP@ssword"
+}
+
+### Login user 1
+POST http://localhost/auth/login
+Content-Type: application/json
+
+{
+  "username": "user1",
+  "password": "MyP@ssword"
+}
