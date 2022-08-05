@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const { generateModel } = require('./baseModel');
 
 const { Schema } = mongoose;
 const SALT_WORK_FACTOR = 10;
@@ -28,8 +29,8 @@ UserSchema.pre('save', function (next) {
     });
 });
 
-UserSchema.methods.validatePasswordAsync = function (candidatePassword) {
+UserSchema.methods.validatePassword = function (candidatePassword) {
     return bcrypt.compare(candidatePassword, this.password);
 };
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = generateModel('User', UserSchema);

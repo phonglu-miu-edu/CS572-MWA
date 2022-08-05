@@ -1,14 +1,14 @@
 const mongoose = require('mongoose');
-
+const { generateModel } = require('./baseModel');
 const { Schema } = mongoose;
 
 const HorseSchema = new Schema({
     name: { type: String, required: true },
-    description: { type: String },
+    description: String,
     picture: { type: String, required: true},
-    dob: { type: Date },
-    breed: { type: String },
-    weight: { type: Number },
+    dob: Date,
+    breed: String,
+    weight: Number
 });
 
-module.exports = mongoose.model('Horse', HorseSchema);
+module.exports = generateModel('Horse', HorseSchema);

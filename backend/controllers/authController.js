@@ -2,13 +2,13 @@ const authService = require('../services/authService');
 const { sign } = require('jsonwebtoken');
 const { getJwtSecretKey } = require('../utils/projectUtil');
 
-const loginAsync = async (req, res, next) => {
+const login = async (req, res, next) => {
     const { username, password } = req.body;
-    const user = await authService.findByUsernameAsync(username);
+    const user = await authService.getByUsername({ username });
 
     if (user) {
         try {
-            const isMatch = await user.validatePasswordAsync(password);
+            const isMatch = await user.validatePassword(password);
 
             if (isMatch) {
                 const { _id, username, fullname, type } = user;
@@ -30,5 +30,5 @@ const loginAsync = async (req, res, next) => {
 };
 
 module.exports = {
-    loginAsync
+    login
 };

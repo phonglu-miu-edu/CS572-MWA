@@ -1,13 +1,15 @@
 const UserModel = require('../models/userModel');
 
-const findByUsernameAsync = async (username) => {
-    try {
-        return await UserModel.findOne({ username });
-    } catch (e) {
-        console.log(e);
-    }
+const getPaging = async ({ page, pageSize }) => {
+    return await UserModel.find({})
+        .limit(pageSize)
+        .skip(pageSize * page);
+};
+
+const getByUsername = async ({ username }) => {
+    return await UserModel.findOne({ username });
 };
 
 module.exports = {
-    findByUsernameAsync
+    getByUsername
 };

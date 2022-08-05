@@ -6,6 +6,9 @@ const path = require('path');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRouter = require('./routers/authRouter');
+const betRouter = require('./routers/betRouter');
+const jockeyRouter = require('./routers/jockeyRouter');
+const horseRouter = require('./routers/horseRouter');
 const raceRouter = require('./routers/raceRouter');
 
 // Init
@@ -25,12 +28,14 @@ app.use(express.json());
 
 // Routes
 app.use('/auth', authRouter);
-app.use('/races', raceRouter);
+app.use('/bets', betRouter);
+app.use('/jockeys', jockeyRouter);
 app.use('/horses', horseRouter);
+app.use('/races', raceRouter);
 
 // Error handlers
 app.use((err, req, res, next) => {
-    res.status(500).json({ error: err });
+    res.status(500).json({ error: err.message || err });
 });
 
 // Bootstrap

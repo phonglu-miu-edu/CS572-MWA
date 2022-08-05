@@ -7,6 +7,56 @@ Content-Type: application/json
     "password": "MyP@ssword"
 }
 
+> {%
+    client.global.set("auth_token", response.body.token);
+%}
+
+### Create jockey
+POST http://localhost/jockeys
+Authorization: {{auth_token}}
+Content-Type: application/json
+
+{
+  "name": "Jockey 1",
+  "description": "The unbeatable",
+  "picture": "https://en.wikipedia.org/wiki/James_McDonald_%28jockey%29#/media/File:James_McDonald_(cropped).jpg",
+  "dob": 334372598
+}
+
+### Edit jockey
+PATCH http://localhost/jockeys/62ed7cde9dfdde795458bdb5
+Authorization: {{auth_token}}
+Content-Type: application/json
+
+{
+  "name": "Jockey 1 updated",
+  "description": "The unbeatable updated",
+  "dob": 334372598
+}
+
+### List paged jockeys
+GET http://localhost/jockeys
+Authorization: {{auth_token}}
+Content-Type: application/json
+
+{
+  "page": 1,
+  "pageSize": 2
+}
+
+### Get jockey
+GET http://localhost/jockeys/62ed7cde9dfdde795458bdb5
+Authorization: {{auth_token}}
+
+### Delete jockey
+DELETE http://localhost/jockeys/62ed7cde9dfdde795458bdb5
+Authorization: {{auth_token}}
+Content-Type: application/json
+
+### Get jockey
+GET http://localhost/jockeys/62ed7cde9dfdde795458bdb5
+Authorization: {{auth_token}}
+
 ### Login user 1
 POST http://localhost/auth/login
 Content-Type: application/json
