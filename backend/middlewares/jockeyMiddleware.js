@@ -1,4 +1,4 @@
-const bodyValidation = (req, res, next) => {
+const createValidation = (req, res, next) => {
     const { name, picture, dob } = req.body;
     if (name && picture && dob) {
         next();
@@ -7,16 +7,16 @@ const bodyValidation = (req, res, next) => {
     }
 };
 
-const idValidation = (req, res, next) => {
-    const { id } = req.params;
-    if (id) {
+const editValidation = (req, res, next) => {
+    const { name, picture, dob } = req.body;
+    if (name || picture || dob) {
         next();
     } else {
-        res.status(500).json({error: 'Request param must contains "id"'});
+        res.status(500).json({error: 'Request body must contains one of these values: "name", "picture", or "dob"'});
     }
 };
 
 module.exports = {
-    bodyValidation,
-    idValidation
+    createValidation,
+    editValidation
 };

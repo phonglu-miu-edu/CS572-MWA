@@ -132,8 +132,8 @@ const generateSasKey = (connectionString, container, permissions) => {
     };
 };
 
-const generateFileUploadUrl = filename => {
-    const connectionString = process.env.UPLOAD_BLOG_SERVICE_CONNECTION_STRING;
+const getUploadUrl = filename => {
+    const connectionString = process.env.BLOG_SERVICE_CONNECTION_STRING;
     const container = process.env.UPLOAD_BLOG_SERVICE_CONTAINER;
     const permissions = 'c';
 
@@ -143,5 +143,5 @@ const generateFileUploadUrl = filename => {
 };
 
 module.exports = {
-    getUploadUrl: generateFileUploadUrl
+    getUploadUrl
 };
