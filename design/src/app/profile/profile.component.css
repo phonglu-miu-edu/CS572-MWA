@@ -1,0 +1,8 @@
+.profile-image{
+    max-width: 10%;
+    max-height: 10%;
+    border-radius: 60px;
+}
+.table{
+    width: 100% !important;
+}
