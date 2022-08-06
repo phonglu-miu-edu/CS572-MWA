@@ -1,15 +1,22 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const { generateModel } = require('./baseModel');
+const { isValidEmail } = require('../utils/projectUtil');
 
 const { Schema } = mongoose;
 const SALT_WORK_FACTOR = 10;
 
 const UserSchema = new Schema({
-    username: { type: String, required: true, index: { unique: true } },
+    email: {
+        type: String,
+        required: true,
+        index: { unique: true },
+        trim: true,
+        validate: [ isValidEmail, 'Email is invalid' ]
+    },
     password: { type: String, required: true },
     fullname: { type: String, required: true },
-    type: { type: String, enum: ['ADMIN', 'USER'], default: 'USER', required: true}
+    type: { type: String, enum: [ 'ADMIN', 'USER' ], default: 'USER', required: true }
 });
 
 UserSchema.pre('save', function (next) {

@@ -1,9 +1,20 @@
+### Create admin
+POST http://localhost/auth/register
+Content-Type: application/json
+
+{
+  "email": "admin@gmail.com",
+  "fullname": "admin",
+  "type": "ADMIN",
+  "password": "MyP@ssword"
+}
+
 ### Login admin
 POST http://localhost/auth/login
 Content-Type: application/json
 
 {
-    "username": "admin",
+    "email": "admin",
     "password": "MyP@ssword"
 }
 
@@ -62,6 +73,6 @@ POST http://localhost/auth/login
 Content-Type: application/json
 
 {
-  "username": "user1",
+  "email": "user1",
   "password": "MyP@ssword"
 }

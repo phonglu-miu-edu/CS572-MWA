@@ -19,7 +19,7 @@ const getJockeyById = async (req, res, next) => {
         if (item) {
             res.json(item);
         } else {
-            res.status(404).json({ message: 'Not found' });
+            res.status(404).json({ error: 'Jockey not found' });
         }
     } catch (err) {
         next(err);

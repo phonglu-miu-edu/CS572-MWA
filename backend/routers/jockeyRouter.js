@@ -6,14 +6,14 @@ const {
     deleteJockey,
     getPagedJockeys
 } = require('../controllers/jockeyController');
-const auth = require('../middlewares/authMiddleware');
+const { isAuth } = require('../middlewares/authMiddleware');
 const { bodyValidation, idValidation } = require('../middlewares/jockeyMiddleware');
 const router = express.Router();
 
-router.get('/', auth, getPagedJockeys);
-router.get('/:id', [auth, idValidation], getJockeyById);
-router.post('/', [auth, bodyValidation], createJockey);
-router.patch('/:id', auth, editJockey);
-router.delete('/:id', auth, deleteJockey);
+router.get('/', isAuth, getPagedJockeys);
+router.get('/:id', [isAuth, idValidation], getJockeyById);
+router.post('/', [isAuth, bodyValidation], createJockey);
+router.patch('/:id', isAuth, editJockey);
+router.delete('/:id', isAuth, deleteJockey);
 
 module.exports = router;

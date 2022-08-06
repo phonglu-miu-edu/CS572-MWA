@@ -2,33 +2,52 @@ const authService = require('../services/authService');
 const { sign } = require('jsonwebtoken');
 const { getJwtSecretKey } = require('../utils/projectUtil');
 
-const login = async (req, res, next) => {
-    const { username, password } = req.body;
-    const user = await authService.getByUsername({ username });
+const register = async (req, res, next) => {
+    try {
+        const { email, fullname, password, type } = req.body;
+        let user = await authService.getByEmail({ email });
 
-    if (user) {
-        try {
+        if (!user) {
+            user = await authService.create({ email, fullname, password, type });
+            res.status(200).json({ user });
+        } else {
+            res.status(409).json({ error: 'Existed' });
+        }
+    } catch (err) {
+        next(err);
+    }
+};
+
+const login = async (req, res, next) => {
+    try {
+        const { email, password } = req.body;
+        const user = await authService.getByEmail({ email });
+
+        if (user) {
             const isMatch = await user.validatePassword(password);
 
             if (isMatch) {
-                const { _id, username, fullname, type } = user;
+                const { _id, email, fullname, type } = user;
                 const token = sign({
                     user_id: _id,
-                    username,
+                    email,
                     fullname,
                     type
                 }, getJwtSecretKey());
 
                 res.status(200).json({ token: token });
+            } else {
+                next('Password is incorrect');
             }
-        } catch (err) {
-            next(err);
         }
-    } else {
+
         next('User not found');
+    } catch (err) {
+        next(err);
     }
 };
 
 module.exports = {
+    register,
     login
 };

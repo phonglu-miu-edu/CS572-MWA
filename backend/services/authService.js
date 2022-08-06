@@ -1,15 +1,19 @@
 const UserModel = require('../models/userModel');
 
-const getPaging = async ({ page, pageSize }) => {
-    return await UserModel.find({})
-        .limit(pageSize)
-        .skip(pageSize * page);
+const getPaged = async ({ page, pageSize }) => {
+    return await UserModel.getPaged({ page, pageSize });
 };
 
-const getByUsername = async ({ username }) => {
-    return await UserModel.findOne({ username });
+const getByEmail = async ({ email }) => {
+    return await UserModel.findOne({ email });
+};
+
+const create = async (body) => {
+    return await UserModel.create(body);
 };
 
 module.exports = {
-    getByUsername
+    getPaged,
+    getByEmail,
+    create
 };
