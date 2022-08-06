@@ -17,6 +17,7 @@
   "license": "ISC",
   "homepage": "https://github.com/phonglu-miu-edu/CS572-MWA#readme",
   "dependencies": {
+    "@azure/storage-blob": "^12.11.0",
     "bcrypt": "^5.0.1",
     "crc": "^4.1.1",
     "dotenv": "^16.0.1",

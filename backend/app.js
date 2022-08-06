@@ -7,6 +7,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const authRouter = require('./routers/authRouter');
 const betRouter = require('./routers/betRouter');
+const fileRouter = require('./routers/fileRouter');
 const jockeyRouter = require('./routers/jockeyRouter');
 const horseRouter = require('./routers/horseRouter');
 const raceRouter = require('./routers/raceRouter');
@@ -29,6 +30,7 @@ app.use(express.json());
 // Routes
 app.use('/auth', authRouter);
 app.use('/bets', betRouter);
+app.use('/files', fileRouter);
 app.use('/jockeys', jockeyRouter);
 app.use('/horses', horseRouter);
 app.use('/races', raceRouter);

@@ -14,8 +14,8 @@ POST http://localhost/auth/login
 Content-Type: application/json
 
 {
-    "email": "admin",
-    "password": "MyP@ssword"
+  "email": "admin@gmail.com",
+  "password": "MyP@ssword"
 }
 
 > {%
@@ -68,7 +68,7 @@ Content-Type: application/json
 GET http://localhost/jockeys/62ed7cde9dfdde795458bdb5
 Authorization: {{auth_token}}
 
-### Login user 1
+### Login invalid user
 POST http://localhost/auth/login
 Content-Type: application/json
 
@@ -76,3 +76,7 @@ Content-Type: application/json
   "email": "user1",
   "password": "MyP@ssword"
 }
+
+### Get upload url
+POST http://localhost/files/uploadUrl/hello.jpg
+Authorization: {{auth_token}}

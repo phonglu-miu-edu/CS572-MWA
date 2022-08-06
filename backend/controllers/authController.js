@@ -35,13 +35,13 @@ const login = async (req, res, next) => {
                     type
                 }, getJwtSecretKey());
 
-                res.status(200).json({ token: token });
+                res.status(200).json({ token });
             } else {
                 next('Password is incorrect');
             }
+        } else {
+            next('User not found');
         }
-
-        next('User not found');
     } catch (err) {
         next(err);
     }
