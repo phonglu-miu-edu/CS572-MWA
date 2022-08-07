@@ -4,7 +4,7 @@ mat-card{
 
 mat-card .col-md-10 mat-progress-bar{
     height: 100%;
-    border-radius: 20px 0px;
+    border-radius: 20px 0;
 }
 mat-card .selecting{
   bottom : 10px;
