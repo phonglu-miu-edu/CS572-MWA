@@ -1,5 +1,5 @@
 ### Create admin
-POST http://localhost/auth/register
+POST http://localhost:8080/auth/register
 Content-Type: application/json
 
 {
@@ -10,7 +10,7 @@ Content-Type: application/json
 }
 
 ### Login admin
-POST http://localhost/auth/login
+POST http://localhost:8080/auth/login
 Content-Type: application/json
 
 {
@@ -23,7 +23,7 @@ Content-Type: application/json
 %}
 
 ### Create jockey
-POST http://localhost/jockeys
+POST http://localhost:8080/jockeys
 Authorization: {{auth_token}}
 Content-Type: application/json
 
@@ -35,7 +35,7 @@ Content-Type: application/json
 }
 
 ### Edit jockey
-PATCH http://localhost/jockeys/62ed7cde9dfdde795458bdb5
+PATCH http://localhost:8080/jockeys/62ed7cde9dfdde795458bdb5
 Authorization: {{auth_token}}
 Content-Type: application/json
 
@@ -46,7 +46,7 @@ Content-Type: application/json
 }
 
 ### List paged jockeys
-GET http://localhost/jockeys
+GET http://localhost:8080/jockeys
 Authorization: {{auth_token}}
 Content-Type: application/json
 
@@ -56,20 +56,20 @@ Content-Type: application/json
 }
 
 ### Get jockey
-GET http://localhost/jockeys/62ed7cde9dfdde795458bdb5
+GET http://localhost:8080/jockeys/62ed7cde9dfdde795458bdb5
 Authorization: {{auth_token}}
 
 ### Delete jockey
-DELETE http://localhost/jockeys/62ed7cde9dfdde795458bdb5
+DELETE http://localhost:8080/jockeys/62ed7cde9dfdde795458bdb5
 Authorization: {{auth_token}}
 Content-Type: application/json
 
 ### Get jockey
-GET http://localhost/jockeys/62ed7cde9dfdde795458bdb5
+GET http://localhost:8080/jockeys/62ed7cde9dfdde795458bdb5
 Authorization: {{auth_token}}
 
 ### Login invalid user
-POST http://localhost/auth/login
+POST http://localhost:8080/auth/login
 Content-Type: application/json
 
 {
@@ -78,5 +78,5 @@ Content-Type: application/json
 }
 
 ### Get upload url
-POST http://localhost/files/uploadUrl/hello.jpg
+POST http://localhost:8080/files/uploadUrl/hello.jpg
 Authorization: {{auth_token}}

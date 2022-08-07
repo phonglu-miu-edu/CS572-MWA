@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const authRouter = require('./routers/authRouter');
 const betRouter = require('./routers/betRouter');
 const fileRouter = require('./routers/fileRouter');
@@ -26,6 +27,7 @@ app.disable('x-powered-by');
 const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' });
 app.use(morgan('combined', { stream: accessLogStream }));
 app.use(express.json());
+app.use(cors());
 
 // Routes
 app.use('/auth', authRouter);
