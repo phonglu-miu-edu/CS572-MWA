@@ -18,9 +18,9 @@ import { DashhomeComponent } from './dashboard/dashhome/dashhome.component';
 import { HistoryComponent } from './dashboard/history/history.component';
 import { ResultComponent } from './dashboard/result/result.component';
 import { SidebarComponent } from './dashboard/sidebar/sidebar.component';
-import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
+import { CoreModule } from './modules/core/core.module';
+import { SharedModule } from './modules/shared/shared.module';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
@@ -29,11 +29,9 @@ import { RegisterComponent } from './register/register.component';
   declarations: [
     AppComponent,
     HomeComponent,
-    LoginComponent,
     RegisterComponent,
     DashboardComponent,
     NavbarComponent,
-    FooterComponent,
     ProfileComponent,
     SidebarComponent,
     DashhomeComponent,
@@ -52,7 +50,9 @@ import { RegisterComponent } from './register/register.component';
     MatListModule,
     MatTableModule,
     MatProgressBarModule,
-    MatSelectModule
+    MatSelectModule,
+    CoreModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]

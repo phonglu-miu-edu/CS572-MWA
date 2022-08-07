@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { ProfileComponent } from './profile/profile.component';
 import { DashhomeComponent } from './dashboard/dashhome/dashhome.component';
-import { ResultComponent } from './dashboard/result/result.component';
 import { HistoryComponent } from './dashboard/history/history.component';
+import { ResultComponent } from './dashboard/result/result.component';
+import { HomeComponent } from './home/home.component';
+import { LoginComponent } from './modules/core/login.component';
+import { ProfileComponent } from './profile/profile.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

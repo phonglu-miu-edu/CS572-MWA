@@ -1,24 +1,20 @@
-<app-navbar></app-navbar>
 <mat-card>
-    <mat-card-content>
-      <form>
-          <h2>Register</h2>
-          <mat-form-field class="full-width-input">
-            <input matInput placeholder="Full Name" formControlName="name" required>
-        </mat-form-field>
-          <mat-form-field class="full-width-input">
-              <input matInput placeholder="Email" formControlName="username" required>
-          </mat-form-field>
-          <mat-form-field class="full-width-input">
-              <input matInput type="password" placeholder="Enter Password" formControlName="password" required>
-          </mat-form-field>
-          <mat-form-field class="full-width-input">
-            <input matInput type="password" placeholder="Re-Type Password" formControlName="password" required>
-        </mat-form-field>
-          <button mat-raised-button color="primary">Register</button>
-      </form>
-    </mat-card-content>
-  </mat-card>
-  <router-outlet></router-outlet>
-  <app-footer></app-footer>
-
+  <mat-card-content>
+    <form>
+      <h2>Register</h2>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Full Name" formControlName="name" required>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput placeholder="Email" formControlName="username" required>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput type="password" placeholder="Enter Password" formControlName="password" required>
+      </mat-form-field>
+      <mat-form-field class="full-width-input">
+        <input matInput type="password" placeholder="Re-Type Password" formControlName="password" required>
+      </mat-form-field>
+      <button mat-raised-button color="primary">Register</button>
+    </form>
+  </mat-card-content>
+</mat-card>

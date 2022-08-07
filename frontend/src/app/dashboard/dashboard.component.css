@@ -1,10 +1,10 @@
-.navbar-light .navbar-nav .nav-link
-{
-    color: #ffffff;
-    font-size: 16px;
+.navbar-light .navbar-nav .nav-link {
+  color: #ffffff;
+  font-size: 16px;
 }
-.branded{
-    color: #ffffff;
-    font-size: 35px;
-    text-decoration:none;
+
+.branded {
+  color: #ffffff;
+  font-size: 35px;
+  text-decoration: none;
 }
