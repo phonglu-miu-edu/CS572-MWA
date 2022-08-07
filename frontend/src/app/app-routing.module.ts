@@ -24,11 +24,11 @@ const routes: Routes = [
   {
     path:  'admin',  component: AdminComponent,
     children: [
-      { path: 'dashboard', component: DashboardComponent, canActivate: [CheckTokenGuard] },
-      { path: 'jockey', component: JockeyComponent, canActivate: [CheckTokenGuard] },
-      { path: 'profile', component: ProfileComponent, canActivate: [CheckTokenGuard] },
-      { path: 'result', component: ResultComponent, canActivate: [CheckTokenGuard] },
-      { path: 'history', component: HistoryComponent, canActivate: [CheckTokenGuard] }
+      { path: 'dashboard', component: DashboardComponent },
+      { path: 'jockey', component: JockeyComponent },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'result', component: ResultComponent },
+      { path: 'history', component: HistoryComponent }
     ]
   }
 ];

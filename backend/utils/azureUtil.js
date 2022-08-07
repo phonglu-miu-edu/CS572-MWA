@@ -120,14 +120,14 @@ const generateSasKey = (connectionString, container, permissions) => {
     const expiryDate = new Date();
     expiryDate.setHours(expiryDate.getHours() + 2);
 
-    const sasKey = generateBlobSASQueryParameters({
+    const sas = generateBlobSASQueryParameters({
         containerName: container,
         permissions: ContainerSASPermissions.parse(permissions),
         expiresOn: expiryDate
     }, sharedKeyCredential);
 
     return {
-        sasKey: sasKey.toString(),
+        sas: sas.toString(),
         url: url
     };
 };
@@ -137,9 +137,15 @@ const getUploadUrl = filename => {
     const container = process.env.UPLOAD_BLOG_SERVICE_CONTAINER;
     const permissions = 'c';
 
-    const { url, sasKey } = generateSasKey(connectionString, container, permissions);
+    const { url, sas } = generateSasKey(connectionString, container, permissions);
 
-    return `${url}/${container}/${filename}?${sasKey}`;
+    return {
+        originUrl: url,
+        fileUrl: `${url}/${container}/${filename}?${sas}`,
+        filename,
+        sas,
+        uploadContainer: container
+    };
 };
 
 module.exports = {

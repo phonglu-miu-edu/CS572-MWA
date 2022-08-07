@@ -1,6 +1,6 @@
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FileService } from '@core/services/file.service';
+import { FileService } from '@core/file/file.service';
 import { Subscription } from 'rxjs';
 
 export interface DialogData {
@@ -31,7 +31,7 @@ export class AddJockeyDialogComponent {
     let fileList: FileList | null = element.files;
     if (fileList && fileList[0]) {
       const file = fileList[0];
-      this.getFileUploadUrlSub = this.fileService.getFileUploadUrl(file)
+      this.getFileUploadUrlSub = this.fileService.getFileUploadSchema(file)
         .subscribe((response: any) => {
           if (response.error) {
             // TODO: toast error

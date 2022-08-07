@@ -22,7 +22,8 @@ export class RegisterComponent {
     const userState = this.userService.getUserState();
 
     if (userState) {
-      this.router.navigate(['dashboard']);
+      // TODO: remove this
+      // this.router.navigate(['dashboard']);
     }
   }
 
@@ -39,8 +40,8 @@ export class RegisterComponent {
         if (response.error) {
           // TODO: toast error
         } else {
-          // TODO: toast success
-          this.router.navigate(['login']);
+          // TODO: toast success, remove this
+          // this.router.navigate(['login']);
         }
       });
   }
