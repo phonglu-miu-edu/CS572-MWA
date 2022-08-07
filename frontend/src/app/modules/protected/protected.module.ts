@@ -11,24 +11,19 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-import { RouterModule } from '@angular/router';
-import { SidebarComponent } from '@core/sidebar/sidebar.component';
-import { FooterComponent } from './footer.component';
+import { AppRoutingModule } from '@app/app-routing.module';
+import { ProtectedComponent } from '@app/modules/protected/protected.component';
+import { CoreModule } from '@core/core.module';
 
 @NgModule({
   declarations: [
-    FooterComponent,
-    SidebarComponent
-  ],
-  exports: [
-    FooterComponent,
-    SidebarComponent
+    ProtectedComponent
   ],
   imports: [
     CommonModule,
+    AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule,
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
@@ -37,8 +32,9 @@ import { FooterComponent } from './footer.component';
     MatListModule,
     MatTableModule,
     MatProgressBarModule,
-    MatSelectModule
+    MatSelectModule,
+    CoreModule
   ]
 })
-export class CoreModule {
+export class ProtectedModule {
 }

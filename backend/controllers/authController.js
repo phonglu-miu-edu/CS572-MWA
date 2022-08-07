@@ -7,11 +7,11 @@ const register = async (req, res, next) => {
         const { email, fullname, password, type } = req.body;
         let user = await authService.getByEmail({ email });
 
-        if (!user) {
+        if (user) {
+            res.status(409).json({ error: 'Existed' });
+        } else {
             user = await authService.create({ email, fullname, password, type });
             res.status(200).json({ user });
-        } else {
-            res.status(409).json({ error: 'Existed' });
         }
     } catch (err) {
         next(err);

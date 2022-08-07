@@ -1,12 +1,12 @@
 <mat-card>
   <mat-card-content>
-    <form>
+    <form [formGroup]="registerForm" (submit)="submit()">
       <h2>Register</h2>
       <mat-form-field class="full-width-input">
-        <input matInput placeholder="Full Name" formControlName="name" required>
+        <input matInput placeholder="Full Name" formControlName="fullname" required>
       </mat-form-field>
       <mat-form-field class="full-width-input">
-        <input matInput placeholder="Email" formControlName="username" required>
+        <input matInput type="email" placeholder="Email" formControlName="email" required>
       </mat-form-field>
       <mat-form-field class="full-width-input">
         <input matInput type="password" placeholder="Enter Password" formControlName="password" required>

@@ -10,21 +10,27 @@ services:
         networks:
             - cs572_mwa_network
 
-#    backend:
-#        build:
-#            context: backend
-#            dockerfile: Dockerfile
-#        depends_on:
-#            - mongo
-#        networks:
-#            - cs572_mwa_network
+    backend:
+        build:
+            context: backend
+            dockerfile: Dockerfile
+        depends_on:
+            - mongo
+        environment:
+            PORT: 8080
+            MONGODB: mongodb+srv://root:O8ie2v1SOMy0phph@cluster0.tmhckqy.mongodb.net/MWA-HoRa
+            BLOG_SERVICE_CONNECTION_STRING: DefaultEndpointsProtocol=https;AccountName=hora;AccountKey=6bMoZa5FdsWLfTO7lQ1p4DbG65WftqlvnEipqJKDwnBJhumSaeQVeYB18QxZHtjSBUUPLwTyy3kd+AStj2yLCw==;EndpointSuffix=core.windows.net
+            UPLOAD_BLOG_SERVICE_CONTAINER: upload
+            FILE_BLOG_SERVICE_CONTAINER: file
+        networks:
+            - cs572_mwa_network
 
     frontend:
         build:
             context: frontend
             dockerfile: Dockerfile
-#        depends_on:
-#            - backend
+        depends_on:
+            - backend
         networks:
             - cs572_mwa_network
 

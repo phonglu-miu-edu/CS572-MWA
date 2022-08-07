@@ -11,24 +11,18 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
-import { RouterModule } from '@angular/router';
-import { SidebarComponent } from '@core/sidebar/sidebar.component';
-import { FooterComponent } from './footer.component';
+import { RegisterComponent } from '@app/modules/public/register/register.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
-    FooterComponent,
-    SidebarComponent
-  ],
-  exports: [
-    FooterComponent,
-    SidebarComponent
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
     HttpClientModule,
     ReactiveFormsModule,
-    RouterModule,
     MatInputModule,
     MatFormFieldModule,
     MatIconModule,
@@ -40,5 +34,5 @@ import { FooterComponent } from './footer.component';
     MatSelectModule
   ]
 })
-export class CoreModule {
+export class PublicModule {
 }

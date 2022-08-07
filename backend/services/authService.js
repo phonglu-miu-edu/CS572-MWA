@@ -9,7 +9,8 @@ const getByEmail = async ({ email }) => {
 };
 
 const create = async (body) => {
-    return await UserModel.create(body);
+    const { password, ...result } = await UserModel.create(body);
+    return result;
 };
 
 module.exports = {

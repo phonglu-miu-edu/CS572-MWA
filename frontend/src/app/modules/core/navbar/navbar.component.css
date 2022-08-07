@@ -1,0 +1,19 @@
+.bg-dark {
+  background-color: #255c2b !important
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.branded {
+  color: #ffffff;
+  font-size: 35px;
+  text-decoration: none;
+}
+
+.logo {
+  width: 36px;
+  margin-right: 10px;
+}

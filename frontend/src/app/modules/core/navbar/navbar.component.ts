@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import UserService from '@core/user/user.service';
 import { Subscription } from 'rxjs';
-import UserService from '../modules/core/user/user.service';
 
 @Component({
   selector: 'app-navbar',

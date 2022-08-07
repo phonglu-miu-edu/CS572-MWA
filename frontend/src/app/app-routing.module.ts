@@ -1,37 +1,32 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './dashboard/dashboard.component';
-import { DashhomeComponent } from './dashboard/dashhome/dashhome.component';
-import { HistoryComponent } from './dashboard/history/history.component';
-import { ResultComponent } from './dashboard/result/result.component';
+import { ProtectedComponent } from '@app/modules/protected/protected.component';
+import { CheckTokenGuard } from '@core/guards/check-token.guard';
+import { DashboardComponent } from './modules/protected/dashboard/dashboard.component';
+import { HistoryComponent } from './modules/protected/history/history.component';
+import { ResultComponent } from './modules/protected/result/result.component';
 import { HomeComponent } from './home/home.component';
-import { LoginComponent } from './modules/core/login.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RegisterComponent } from './register/register.component';
+import { ProfileComponent } from './modules/protected/profile/profile.component';
+import { LoginComponent } from './modules/public/login/login.component';
+import { RegisterComponent } from './modules/public/register/register.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
   {
-    path: 'dashboard', component: DashboardComponent,
+    path: '', component: HomeComponent
+  },
+  {
+    path: 'login', component: LoginComponent
+  },
+  {
+    path: 'register', component: RegisterComponent
+  },
+  {
+    path: 'me',  component: ProtectedComponent, canActivate: [CheckTokenGuard],
     children: [
-      {
-        path: 'profile',
-        component: ProfileComponent
-      },
-      {
-        path: '',
-        component: DashhomeComponent
-      },
-      {
-        path: 'result',
-        component: ResultComponent
-      },
-      {
-        path: 'history',
-        component: HistoryComponent
-      }
+      { path: 'dashboard', component: DashboardComponent, canActivate: [CheckTokenGuard] },
+      { path: 'profile', component: ProfileComponent, canActivate: [CheckTokenGuard] },
+      { path: 'result', component: ResultComponent, canActivate: [CheckTokenGuard] },
+      { path: 'history', component: HistoryComponent, canActivate: [CheckTokenGuard] }
     ]
   }
 ];

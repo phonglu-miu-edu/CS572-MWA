@@ -1,0 +1,21 @@
+<mat-card>
+  <mat-action-list>
+    <div mat-subheader>Menu</div>
+    <button mat-list-item [routerLink]="['dashboard']">
+      <mat-icon mat-list-icon>home</mat-icon>
+      Home
+    </button>
+    <button mat-list-item [routerLink]="['profile']">
+      <mat-icon mat-list-icon>account_circle</mat-icon>
+      Profile
+    </button>
+    <button mat-list-item [routerLink]="['result']">
+      <mat-icon mat-list-icon>emoji_events</mat-icon>
+      Result
+    </button>
+    <button mat-list-item [routerLink]="['history']">
+      <mat-icon mat-list-icon>history</mat-icon>
+      History
+    </button>
+  </mat-action-list>
+</mat-card>

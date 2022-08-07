@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import ResponseModel from '@core/api/response.model';
+import { environment } from '@environments/environment';
 import jwt_decode from 'jwt-decode';
-import { BehaviorSubject } from 'rxjs';
-import { environment } from '../../../../environments/environment';
+import { BehaviorSubject, catchError, map, of } from 'rxjs';
 import UserModel from './user.model';
 
 @Injectable({
@@ -15,8 +16,25 @@ export default class UserService {
   constructor(private http: HttpClient) {
   }
 
+  register(email: string, password: string, fullname: string) {
+    return this.http.post<{ user: UserModel }>(environment.backendUrl + '/auth/register', {
+      email,
+      password,
+      fullname,
+      type: 'USER'
+    })
+      .pipe(
+        map((data) => ({ data: data.user } as ResponseModel)),
+        catchError(error => of({ error: error.message } as ResponseModel))
+      );
+  }
+
   login(email: string, password: string) {
-    return this.http.post<{ token: string }>(environment.backendUrl + '/auth/login', { email, password });
+    return this.http.post<{ token: string }>(environment.backendUrl + '/auth/login', { email, password })
+      .pipe(
+        map((data) => ({ data: data.token } as ResponseModel)),
+        catchError(error => of({ error: error.message } as ResponseModel))
+      );
   }
 
   logout() {
@@ -36,7 +54,7 @@ export default class UserService {
 
   refreshState() {
     const token = localStorage.getItem('token');
-    if (token) {
+    if (token && token != 'undefined') {
       const userModel = jwt_decode(token) as UserModel;
       if (userModel) {
         this.userState$.next(userModel);
