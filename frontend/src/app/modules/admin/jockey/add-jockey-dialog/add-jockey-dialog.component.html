@@ -1,0 +1,27 @@
+<h1 mat-dialog-title>Add new jockey</h1>
+<div mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="data.name">
+  </mat-form-field>
+  <mat-form-field>
+    <div>
+      <mat-toolbar>
+        <input matInput [(ngModel)]="data.picture" readonly name="name"/>
+        <button mat-flat-button color="primary">Browse File</button>
+      </mat-toolbar>
+      <input
+        type="file"
+        #fileInput
+        id="uploadFile"
+        (change)="uploadFile($event)"
+        name="uploadFile"
+        accept="image/*"
+      />
+    </div>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-raised-button color="primary" [mat-dialog-close]="data">Add</button>
+  <button mat-button (click)="onCancelClick()">Cancel</button>
+</div>

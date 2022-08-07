@@ -1,5 +1,9 @@
+a[mat-raised-button] {
+  box-shadow: none;
+}
+
 .bg-dark {
-  background-color: #255c2b !important
+  background-color: #3f51b5 !important
 }
 
 .navbar-light .navbar-nav .nav-link {

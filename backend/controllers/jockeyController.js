@@ -3,7 +3,7 @@ const { extractPatchParams } = require('../utils/projectUtil');
 
 const getPagedJockeys = async (req, res, next) => {
     try {
-        const { page, pageSize } = req.body;
+        const { page, pageSize } = req.params;
         const list = await jockeyService.getPaged({ page, pageSize });
         res.json(list);
     } catch (err) {

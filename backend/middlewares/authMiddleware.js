@@ -10,7 +10,10 @@ const isAuth = (req, res, next) => {
     }
 
     try {
-        req.authorizedUser = jwt.verify(token, getJwtSecretKey());
+        const tokenPair = token.split(' ');
+        if (tokenPair.length === 2 && tokenPair[0].toLowerCase() === 'bearer') {
+            req.authorizedUser = jwt.verify(tokenPair[1], getJwtSecretKey());
+        }
     } catch (err) {
         return res.status(401).json();
     }

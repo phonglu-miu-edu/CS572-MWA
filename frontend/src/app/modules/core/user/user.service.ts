@@ -22,11 +22,10 @@ export default class UserService {
       password,
       fullname,
       type: 'USER'
-    })
-      .pipe(
-        map((data) => ({ data: data.user } as ResponseModel)),
-        catchError(error => of({ error: error.message } as ResponseModel))
-      );
+    }).pipe(
+      map((data) => ({ data: data.user } as ResponseModel)),
+      catchError(error => of({ error: error.message } as ResponseModel))
+    );
   }
 
   login(email: string, password: string) {

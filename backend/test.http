@@ -46,14 +46,9 @@ Content-Type: application/json
 }
 
 ### List paged jockeys
-GET http://localhost:8080/jockeys
+GET http://localhost:8080/jockeys/2/1
 Authorization: {{auth_token}}
 Content-Type: application/json
-
-{
-  "page": 1,
-  "pageSize": 2
-}
 
 ### Get jockey
 GET http://localhost:8080/jockeys/62ed7cde9dfdde795458bdb5
