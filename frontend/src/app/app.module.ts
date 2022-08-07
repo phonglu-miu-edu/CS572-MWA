@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ViewEncapsulation } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -15,10 +15,9 @@ import { ProtectedModule } from '@app/modules/protected/protected.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './modules/protected/dashboard/dashboard.component';
-import { DashhomeComponent } from './modules/protected/dashhome/dashhome.component';
 import { HistoryComponent } from './modules/protected/history/history.component';
 import { ResultComponent } from './modules/protected/result/result.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './modules/public/home/home.component';
 import { CoreModule } from '@core/core.module';
 import { PublicModule } from './modules/public/public.module';
 import { SharedModule } from './modules/shared/shared.module';
@@ -32,13 +31,12 @@ import { ProfileComponent } from './modules/protected/profile/profile.component'
     DashboardComponent,
     NavbarComponent,
     ProfileComponent,
-    DashhomeComponent,
     ResultComponent,
     HistoryComponent
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
     BrowserAnimationsModule,
     MatInputModule,
     MatFormFieldModule,

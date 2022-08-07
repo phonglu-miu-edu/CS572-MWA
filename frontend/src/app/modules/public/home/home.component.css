@@ -4,19 +4,19 @@
   object-fit: cover;
 }
 
-.homecontent {
+.content {
   position: absolute;
   top: 50%;
   left: 40%;
   transform: translate(-50%, -50%);
 }
 
-.homecontent h1 {
+.content h1 {
   color: #ffffff;
   font-size: 50px;
 }
 
-.homecontent a {
+.content a {
   margin-top: 10px;
 }
 
@@ -25,7 +25,7 @@
     height: 700px;
   }
 
-  .homecontent h1 {
+  .content h1 {
     font-size: 40px;
   }
 }

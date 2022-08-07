@@ -5,7 +5,7 @@ import { CheckTokenGuard } from '@core/guards/check-token.guard';
 import { DashboardComponent } from './modules/protected/dashboard/dashboard.component';
 import { HistoryComponent } from './modules/protected/history/history.component';
 import { ResultComponent } from './modules/protected/result/result.component';
-import { HomeComponent } from './home/home.component';
+import { HomeComponent } from './modules/public/home/home.component';
 import { ProfileComponent } from './modules/protected/profile/profile.component';
 import { LoginComponent } from './modules/public/login/login.component';
 import { RegisterComponent } from './modules/public/register/register.component';
