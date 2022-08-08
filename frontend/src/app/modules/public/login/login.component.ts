@@ -23,7 +23,7 @@ export class LoginComponent {
     }
   }
 
-  async submit() {
+  submit() {
     const { email, password } = this.loginForm.value;
     this.userService.login(email, password)
       .subscribe((response: any) => {

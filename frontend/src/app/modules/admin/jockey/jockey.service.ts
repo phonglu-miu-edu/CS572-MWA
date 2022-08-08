@@ -19,4 +19,12 @@ export default class JockeyService {
         catchError(error => of({ error: error.message } as ResponseModel))
       );
   };
+
+  create = (name: string, description: string, picture: string) => {
+    return this.http.post<{ jockey: JockeyModel }>(`${environment.backendUrl}/jockeys`, { name, description, picture })
+      .pipe(
+        map((data) => ({ data } as ResponseModel)),
+        catchError(error => of({ error: error.message } as ResponseModel))
+      );
+  }
 }

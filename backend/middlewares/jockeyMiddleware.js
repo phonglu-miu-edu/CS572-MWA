@@ -1,9 +1,9 @@
 const createValidation = (req, res, next) => {
-    const { name, picture, dob } = req.body;
-    if (name && picture && dob) {
+    const { name } = req.body;
+    if (name) {
         next();
     } else {
-        res.status(500).json({error: 'Request body must contains "name", "picture", and "dob"'});
+        res.status(500).json({error: 'Request body must contains "name"'});
     }
 };
 

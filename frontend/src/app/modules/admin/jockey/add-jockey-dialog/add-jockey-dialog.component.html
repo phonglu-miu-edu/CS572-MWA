@@ -1,29 +1,31 @@
-<h1 mat-dialog-title>Add new jockey</h1>
-<div mat-dialog-content>
-  <mat-form-field appearance="fill">
-    <mat-label>Name</mat-label>
-    <input matInput [(ngModel)]="data.name"/>
-  </mat-form-field>
-  <mat-form-field appearance="fill">
-    <mat-label>Description</mat-label>
-    <textarea matInput [(ngModel)]="data.description"></textarea>
-  </mat-form-field>
-  <div>
-    <div class="uploadFileBlock">
-      <button mat-flat-button color="primary">Browse File</button>
-      <input
-        type="file"
-        #fileInput
-        id="uploadFile"
-        (change)="uploadFile($event)"
-        name="uploadFile"
-        accept="image/*"
-      />
+<div [formGroup]="form">
+  <h1 mat-dialog-title>Add new jockey</h1>
+  <div mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <div>
+      <div class="uploadFileBlock">
+        <button mat-flat-button color="primary">Choose File</button>
+        <input
+          type="file"
+          #fileInput
+          id="uploadFile"
+          (change)="uploadFile($event)"
+          name="uploadFile"
+          accept="image/*"
+        />
+      </div>
+      <img [src]="form.value.picture" (click)="sharedService.openWindow(form.value.picture)" alt="Picture" class="picture"/>
     </div>
-    <img src="{{data.picture || '/assets/no-profile-picture.jpg'}}" (click)="sharedService.openWindow(data.picture);" alt="Picture" class="picture"/>
   </div>
-</div>
-<div mat-dialog-actions>
-  <button mat-raised-button color="primary" [mat-dialog-close]="data" [disabled]="processing$.value">Add</button>
-  <button mat-button (click)="onCancelClick()">Cancel</button>
+  <div mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="!form.valid || processing$.value" (click)="onAddClick()">Add</button>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+  </div>
 </div>

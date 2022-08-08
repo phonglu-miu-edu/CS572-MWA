@@ -11,6 +11,7 @@ import JockeyService from './jockey.service';
 })
 export class JockeyComponent {
   getJockeysSub!: Subscription;
+  createJockeySub!: Subscription;
   page = 1;
   pageSize = 10;
   displayedColumns: string[] = ['name', 'description', 'picture'];
@@ -27,7 +28,7 @@ export class JockeyComponent {
   }
 
   getDataSource = () => {
-    this.jockeyService.get(this.page, this.pageSize)
+    this.getJockeysSub = this.jockeyService.get(this.page, this.pageSize)
       .subscribe(response => {
         this.dataSource = response.data;
       });
@@ -41,7 +42,11 @@ export class JockeyComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log(result);
+        const { name, description, picture } = result;
+        this.createJockeySub = this.jockeyService.create(name, description, picture)
+          .subscribe(response => {
+            this.getDataSource();
+          });
       }
     });
   }

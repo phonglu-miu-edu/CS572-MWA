@@ -6,8 +6,9 @@
       </h1>
       <span class="menu-spacer"></span>
       <div class="menu-items">
-        <a mat-button [routerLink]="[ 'admin', 'dashboard']"> Dashboard </a>
-        <button mat-button [matMenuTriggerFor]="menu"> {{fullname}} </button>
+        <button mat-button [matMenuTriggerFor]="menu">
+          {{fullname}} <mat-icon>arrow_drop_down</mat-icon>
+        </button>
         <mat-menu #menu="matMenu">
           <button mat-menu-item [routerLink]="[ 'admin', 'profile']"> Profile</button>
           <button mat-menu-item (click)="logout()">Logout</button>
