@@ -13,7 +13,8 @@ export default class JockeyService {
   }
 
   get = (page: number, pageSize: number) => {
-    return this.http.get<{ jockeys: JockeyModel[] }>(`${environment.backendUrl}/jockeys/${pageSize}/${page}`)
+    // TODO: pageSize is fix for demo
+    return this.http.get<{ jockeys: JockeyModel[] }>(`${environment.backendUrl}/jockeys/200/${page}`)
       .pipe(
         map((data) => ({ data } as ResponseModel)),
         catchError(error => of({ error: error.message } as ResponseModel))
