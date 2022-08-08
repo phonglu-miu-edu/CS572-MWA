@@ -1,0 +1,45 @@
+<div [formGroup]="form">
+  <h1 mat-dialog-title>Add new jockey</h1>
+  <mat-dialog-content>
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name"/>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <textarea matInput formControlName="description"></textarea>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Breed</mat-label>
+      <mat-select formControlName="breed">
+        <mat-option *ngFor="let breed of breeds" [value]="breed">
+          {{breed}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Weight (kg)</mat-label>
+      <input matInput formControlName="weight" type="number" />
+    </mat-form-field>
+    <div>
+      <div class="uploadFileBlock">
+        <button mat-flat-button color="primary">Choose File</button>
+        <input
+          type="file"
+          #fileInput
+          id="uploadFile"
+          (change)="uploadFile($event)"
+          name="uploadFile"
+          accept="image/*"
+        />
+      </div>
+      <img [src]="form.value.picture || '/assets/no-profile-picture.jpg'"
+           (click)="sharedService.openWindow(form.value.picture)" alt="Picture" class="picture"/>
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="!form.valid || processing$.value"
+            (click)="onAddClick()">{{form.value.id ? 'Edit' : 'Add'}}</button>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+  </mat-dialog-actions>
+</div>

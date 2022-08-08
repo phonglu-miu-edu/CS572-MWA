@@ -10,14 +10,16 @@ export interface DialogData {
   name: string;
   description: string;
   picture: string;
+  breed: string;
+  weight: number;
 }
 
 @Component({
-  selector: 'app-jockey-dialog',
-  templateUrl: 'jockey-dialog.component.html',
-  styleUrls: ['./jockey-dialog.component.css']
+  selector: 'app-horse-dialog',
+  templateUrl: 'horse-dialog.component.html',
+  styleUrls: ['./horse-dialog.component.css']
 })
-export class JockeyDialogComponent {
+export class HorseDialogComponent {
   @ViewChild('fileInput') fileInput: ElementRef;
   form: FormGroup;
   processing$: BehaviorSubject<boolean> = new BehaviorSubject(false);
@@ -25,10 +27,54 @@ export class JockeyDialogComponent {
   getFileUploadUrlSub!: Subscription;
   uploadSub!: Subscription;
 
+  breeds = [
+    "American Paint Horse",
+    "American Quarter Horse",
+    "American Saddlebred",
+    "Andalusian and Lusitano",
+    "Appaloosa",
+    "Arabian",
+    "Belgian",
+    "Clydesdale",
+    "Colorado Rangerbred",
+    "Dutch Warmblood",
+    "Fell Pony",
+    "Friesian",
+    "Gypsy Vanner",
+    "Hackney Horse and Hackney Pony",
+    "Haflinger",
+    "Hanoverian",
+    "Holsteiner",
+    "Icelandic Horse",
+    "Kentucky Mountain Saddle Horse and Mountain Pleasure Horse",
+    "Miniature Horse",
+    "Missouri Fox Trotter",
+    "Morgan",
+    "Mustang",
+    "National Show Horse",
+    "Norwegian Fjord",
+    "Oldenburg",
+    "Paso Fino",
+    "Percheron",
+    "Peruvian Paso",
+    "Pony of the Americas",
+    "Racking Horse",
+    "Rocky Mountain Horse",
+    "Selle Francais",
+    "Shetland Pony",
+    "Shire",
+    "Standardbred",
+    "Tennessee Walking Horse",
+    "Thoroughbred",
+    "Trakehner",
+    "Westphalian",
+    "Welsh Pony and Welsh Cob"
+  ];
+
   constructor(
     private fb: FormBuilder,
     private fileService: FileService,
-    public dialogRef: MatDialogRef<JockeyDialogComponent>,
+    public dialogRef: MatDialogRef<HorseDialogComponent>,
     public sharedService: SharedService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
@@ -36,7 +82,9 @@ export class JockeyDialogComponent {
       id: data.id,
       name: [data.name, [Validators.required]],
       description: data.description,
-      picture: [data.picture, [Validators.required]]
+      picture: [data.picture, [Validators.required]],
+      breed: [data.breed, [Validators.required]],
+      weight: [data.weight, [Validators.required]]
     });
   }
 

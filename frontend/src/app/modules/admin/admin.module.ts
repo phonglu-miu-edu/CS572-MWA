@@ -18,6 +18,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from '@app/app-routing.module';
 import { AdminComponent } from '@app/modules/admin/admin.component';
+import { HorseDialogComponent } from '@app/modules/admin/horse/horse-dialog/horse-dialog.component';
+import { HorseComponent } from '@app/modules/admin/horse/horse.component';
 import { SharedModule } from '@app/modules/shared/shared.module';
 import { CoreModule } from '@core/core.module';
 import { JockeyDialogComponent } from './jockey/jockey-dialog/jockey-dialog.component';
@@ -27,7 +29,9 @@ import { JockeyComponent } from './jockey/jockey.component';
   declarations: [
     AdminComponent,
     JockeyComponent,
-    JockeyDialogComponent
+    JockeyDialogComponent,
+    HorseComponent,
+    HorseDialogComponent
   ],
   imports: [
     CommonModule,

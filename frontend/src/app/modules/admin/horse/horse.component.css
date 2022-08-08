@@ -1,0 +1,69 @@
+table {
+  width: 100%;
+}
+
+.single-action-button {
+  margin-bottom: 20px;
+}
+
+.picCol {
+  max-width: 256px;
+  max-height: 128px;
+}
+
+tr.detail-row {
+  height: 0;
+}
+
+tr.element-row:not(.expanded-row):hover {
+  background: whitesmoke;
+}
+
+tr.element-row:not(.expanded-row):active {
+  background: #efefef;
+}
+
+.element-row td {
+  border-bottom-width: 0;
+}
+
+.element-detail {
+  overflow: hidden;
+  display: flex;
+}
+
+.element-detail button {
+  margin-right: 10px;
+}
+
+.element-diagram {
+  font-weight: lighter;
+  margin: 0 20px 10px 0;
+}
+
+.element-text {
+  margin: 0 20px 10px 0;
+}
+
+.element-text h3 {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 0.9em;
+  font-style: italic;
+  margin-right: 10px;
+  margin-bottom: 0;
+}
+
+.element-symbol {
+  font-weight: bold;
+  font-size: 40px;
+  line-height: normal;
+}
+
+.element-description {
+  padding: 16px 0;
+}
+
+.element-description-attribution {
+  opacity: 0.5;
+}

@@ -13,6 +13,8 @@ import { Component } from '@angular/core';
         <mat-nav-list>
           <a mat-list-item [routerLink]="['dashboard']"> Dashboard </a>
           <a mat-list-item [routerLink]="['jockey']"> Jockeys </a>
+          <a mat-list-item [routerLink]="['horse']"> Horses </a>
+          <a mat-list-item [routerLink]="['race']"> Races </a>
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>

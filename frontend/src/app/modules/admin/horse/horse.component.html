@@ -1,8 +1,10 @@
-<h1 class="center">Jockeys</h1>
+<h1 class="center">Horses</h1>
 <button mat-raised-button color="primary" (click)="onAddClick()" class="single-action-button">Add</button>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
   <mat-text-column name="name"></mat-text-column>
   <mat-text-column name="description"></mat-text-column>
+  <mat-text-column name="breed"></mat-text-column>
+  <mat-text-column name="weight" ></mat-text-column>
 
   <ng-container matColumnDef="expand">
     <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
@@ -23,8 +25,10 @@
           <img class="picCol" src="{{element.picture}}" alt="{{element.name}}"/>
         </div>
         <div class="element-text">
-          <div class="element-name"> {{element.name}} </div>
+          <div class="element-name"><h3>Name</h3> {{element.name}}</div>
           <div class="element-description"> {{element.description}} </div>
+          <div class="element-breed"><h3>Breed</h3> {{element.breed}} </div>
+          <div class="element-weight"><h3>Weight</h3> {{element.weight}} </div>
           <button mat-raised-button color="primary" (click)="onEditClick(element)">Edit</button>
           <button mat-raised-button color="warn" (click)="onDeleteClick(element)">Delete</button>
         </div>

@@ -6,7 +6,6 @@ const HorseSchema = new Schema({
     name: { type: String, required: true },
     description: String,
     picture: { type: String, required: true},
-    dob: Date,
     breed: String,
     weight: Number
 });

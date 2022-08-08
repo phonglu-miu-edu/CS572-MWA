@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from '@app/modules/admin/admin.component';
+import { HorseComponent } from '@app/modules/admin/horse/horse.component';
 import { JockeyComponent } from '@app/modules/admin/jockey/jockey.component';
 import { CheckTokenGuard } from '@core/guards/check-token.guard';
 import { DashboardComponent } from './modules/admin/dashboard/dashboard.component';
@@ -24,11 +25,11 @@ const routes: Routes = [
   {
     path:  'admin',  component: AdminComponent,
     children: [
+      { path: 'profile', component: ProfileComponent },
       { path: 'dashboard', component: DashboardComponent },
       { path: 'jockey', component: JockeyComponent },
-      { path: 'profile', component: ProfileComponent },
-      { path: 'result', component: ResultComponent },
-      { path: 'history', component: HistoryComponent }
+      { path: 'horse', component: HorseComponent },
+      // { path: 'race', component: RaceComponent }
     ]
   }
 ];

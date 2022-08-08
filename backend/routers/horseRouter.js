@@ -1,12 +1,19 @@
 const express = require('express');
-const { getHorses, getHorseById, createHorse, editHorse, deleteHorse } = require('../controllers/horseController');
+const {
+    getHorseById,
+    createHorse,
+    editHorse,
+    deleteHorse,
+    getPagedHorses
+} = require('../controllers/horseController');
 const { isAuth } = require('../middlewares/authMiddleware');
+const { createValidation, editValidation } = require('../middlewares/horseMiddleware');
 const router = express.Router();
 
-router.get('/', isAuth, getHorses);
-router.get('/:horse_id', isAuth, getHorseById);
-router.post('/', isAuth, createHorse);
-router.patch('/:horse_id', isAuth, editHorse);
-router.delete('/:horse_id', isAuth, deleteHorse);
+router.get('/:pageSize/:page', isAuth, getPagedHorses);
+router.get('/:id', isAuth, getHorseById);
+router.post('/', [ isAuth, createValidation ], createHorse);
+router.patch('/:id', [ isAuth, editValidation ], editHorse);
+router.delete('/:id', isAuth, deleteHorse);
 
 module.exports = router;
