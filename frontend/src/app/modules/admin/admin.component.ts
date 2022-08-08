@@ -3,6 +3,11 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-protected',
   template: `
+    <style>
+      mat-sidenav-content {
+        padding: 20px;
+      }
+    </style>
     <mat-sidenav-container>
       <mat-sidenav opened mode="side">
         <mat-nav-list>
@@ -11,9 +16,7 @@ import { Component } from '@angular/core';
         </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
-        <div style="height: 92vh">
-          <router-outlet></router-outlet>
-        </div>
+        <router-outlet></router-outlet>
       </mat-sidenav-content>
     </mat-sidenav-container>
   `

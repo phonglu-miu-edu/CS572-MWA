@@ -3,6 +3,10 @@ a[mat-raised-button]:hover {
   text-decoration: none;
 }
 
+.center {
+  text-align: center;
+}
+
 .mat-card-title {
   margin-bottom: 30px !important;
 }
