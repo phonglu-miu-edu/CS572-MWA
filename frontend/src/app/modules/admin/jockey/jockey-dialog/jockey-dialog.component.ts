@@ -6,17 +6,18 @@ import { FileService } from '@core/file/file.service';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
 export interface DialogData {
+  id: string;
   name: string;
   description: string;
   picture: string;
 }
 
 @Component({
-  selector: 'add-jockey',
-  templateUrl: 'add-jockey-dialog.component.html',
-  styleUrls: ['./add-jockey-dialog.component.css']
+  selector: 'app-jockey-dialog',
+  templateUrl: 'jockey-dialog.component.html',
+  styleUrls: ['./jockey-dialog.component.css']
 })
-export class AddJockeyDialogComponent {
+export class JockeyDialogComponent {
   @ViewChild('fileInput') fileInput: ElementRef;
   form: FormGroup;
   processing$: BehaviorSubject<boolean> = new BehaviorSubject(false);
@@ -27,14 +28,15 @@ export class AddJockeyDialogComponent {
   constructor(
     private fb: FormBuilder,
     private fileService: FileService,
-    public dialogRef: MatDialogRef<AddJockeyDialogComponent>,
+    public dialogRef: MatDialogRef<JockeyDialogComponent>,
     public sharedService: SharedService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
     this.form = fb.group({
+      id: data.id,
       name: [data.name, [Validators.required]],
       description: data.description,
-      picture: data.picture ? data.picture : '/assets/no-profile-picture.jpg'
+      picture: [data.picture, [Validators.required]]
     });
   }
 

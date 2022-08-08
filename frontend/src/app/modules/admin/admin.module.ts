@@ -19,14 +19,14 @@ import { AppRoutingModule } from '@app/app-routing.module';
 import { AdminComponent } from '@app/modules/admin/admin.component';
 import { SharedModule } from '@app/modules/shared/shared.module';
 import { CoreModule } from '@core/core.module';
-import { AddJockeyDialogComponent } from './jockey/add-jockey-dialog/add-jockey-dialog.component';
+import { JockeyDialogComponent } from './jockey/jockey-dialog/jockey-dialog.component';
 import { JockeyComponent } from './jockey/jockey.component';
 
 @NgModule({
   declarations: [
     AdminComponent,
     JockeyComponent,
-    AddJockeyDialogComponent
+    JockeyDialogComponent
   ],
   imports: [
     CommonModule,

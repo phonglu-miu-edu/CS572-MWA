@@ -1,6 +1,6 @@
 <div [formGroup]="form">
   <h1 mat-dialog-title>Add new jockey</h1>
-  <div mat-dialog-content>
+  <mat-dialog-content>
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
       <input matInput formControlName="name"/>
@@ -21,11 +21,13 @@
           accept="image/*"
         />
       </div>
-      <img [src]="form.value.picture" (click)="sharedService.openWindow(form.value.picture)" alt="Picture" class="picture"/>
+      <img [src]="form.value.picture || '/assets/no-profile-picture.jpg'"
+           (click)="sharedService.openWindow(form.value.picture)" alt="Picture" class="picture"/>
     </div>
-  </div>
-  <div mat-dialog-actions>
-    <button mat-raised-button color="primary" [disabled]="!form.valid || processing$.value" (click)="onAddClick()">Add</button>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="!form.valid || processing$.value"
+            (click)="onAddClick()">{{form.value.id ? 'Edit' : 'Add'}}</button>
     <button mat-button (click)="onCancelClick()">Cancel</button>
-  </div>
+  </mat-dialog-actions>
 </div>

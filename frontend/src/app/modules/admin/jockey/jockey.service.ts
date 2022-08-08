@@ -27,4 +27,20 @@ export default class JockeyService {
         catchError(error => of({ error: error.message } as ResponseModel))
       );
   }
+
+  edit = (id: string, name: string, description: string, picture: string) => {
+    return this.http.patch<{ jockey: JockeyModel }>(`${environment.backendUrl}/jockeys/${id}`, { name, description, picture })
+      .pipe(
+        map((data) => ({ data } as ResponseModel)),
+        catchError(error => of({ error: error.message } as ResponseModel))
+      );
+  }
+
+  delete = (id: string) => {
+    return this.http.delete<{ jockey: JockeyModel }>(`${environment.backendUrl}/jockeys/${id}`)
+      .pipe(
+        map((data) => ({ data } as ResponseModel)),
+        catchError(error => of({ error: error.message } as ResponseModel))
+      );
+  }
 }

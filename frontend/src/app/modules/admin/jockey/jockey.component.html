@@ -1,5 +1,5 @@
 <h1 class="center">Jockeys</h1>
-<button mat-raised-button color="primary" (click)="openDialog()">Add new</button>
+<button mat-raised-button color="primary" (click)="onAddClick()" class="single-action-button">Add new</button>
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" multiTemplateDataRows>
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Name</th>
@@ -9,11 +9,6 @@
   <ng-container matColumnDef="description">
     <th mat-header-cell *matHeaderCellDef> Description</th>
     <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="picture">
-    <th mat-header-cell *matHeaderCellDef> Picture</th>
-    <td mat-cell *matCellDef="let element"></td>
   </ng-container>
 
   <ng-container matColumnDef="expand">
@@ -37,6 +32,8 @@
         <div>
           <div class="example-element-name"> {{element.name}} </div>
           <div class="example-element-description"> {{element.description}} </div>
+          <button mat-raised-button color="primary" (click)="onEditClick(element)">Edit</button>
+          <button mat-raised-button color="warn" (click)="onDeleteClick(element)">Delete</button>
         </div>
       </div>
     </td>

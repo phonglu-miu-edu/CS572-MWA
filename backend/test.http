@@ -24,44 +24,42 @@ Content-Type: application/json
 
 ### Create jockey
 POST http://localhost:8080/jockeys
-Authorization: {{auth_token}}
+Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
   "name": "Jockey 1",
   "description": "The unbeatable",
-  "picture": "https://en.wikipedia.org/wiki/James_McDonald_%28jockey%29#/media/File:James_McDonald_(cropped).jpg",
-  "dob": 334372598
+  "picture": "https://en.wikipedia.org/wiki/James_McDonald_%28jockey%29#/media/File:James_McDonald_(cropped).jpg"
 }
 
 ### Edit jockey
-PATCH http://localhost:8080/jockeys/62ed7cde9dfdde795458bdb5
-Authorization: {{auth_token}}
+PATCH http://localhost:8080/jockeys/62ed8626cb2e334e32f68043
+Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 {
   "name": "Jockey 1 updated",
-  "description": "The unbeatable updated",
-  "dob": 334372598
+  "description": "The unbeatable updated"
 }
 
 ### List paged jockeys
 GET http://localhost:8080/jockeys/2/1
-Authorization: {{auth_token}}
+Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 ### Get jockey
-GET http://localhost:8080/jockeys/62ed7cde9dfdde795458bdb5
-Authorization: {{auth_token}}
+GET http://localhost:8080/jockeys/62ed8626cb2e334e32f68043
+Authorization: Bearer {{auth_token}}
 
 ### Delete jockey
-DELETE http://localhost:8080/jockeys/62ed7cde9dfdde795458bdb5
-Authorization: {{auth_token}}
+DELETE http://localhost:8080/jockeys/62ed8626cb2e334e32f68043
+Authorization: Bearer {{auth_token}}
 Content-Type: application/json
 
 ### Get jockey
-GET http://localhost:8080/jockeys/62ed7cde9dfdde795458bdb5
-Authorization: {{auth_token}}
+GET http://localhost:8080/jockeys/62ed8626cb2e334e32f68043
+Authorization: Bearer {{auth_token}}
 
 ### Login invalid user
 POST http://localhost:8080/auth/login
@@ -74,4 +72,4 @@ Content-Type: application/json
 
 ### Get upload url
 POST http://localhost:8080/files/uploadUrl/hello.jpg
-Authorization: {{auth_token}}
+Authorization: Bearer {{auth_token}}

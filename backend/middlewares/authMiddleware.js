@@ -13,6 +13,8 @@ const isAuth = (req, res, next) => {
         const tokenPair = token.split(' ');
         if (tokenPair.length === 2 && tokenPair[0].toLowerCase() === 'bearer') {
             req.authorizedUser = jwt.verify(tokenPair[1], getJwtSecretKey());
+        } else {
+            return res.status(401).json();
         }
     } catch (err) {
         return res.status(401).json();
