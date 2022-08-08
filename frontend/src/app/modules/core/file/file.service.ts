@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BlobServiceClient, BlockBlobClient, ContainerClient } from '@azure/storage-blob';
+import { BlobServiceClient } from '@azure/storage-blob';
 import ResponseModel from '@core/api/response.model';
 import AzureBlobFileModel from '@core/file/file.model';
 import { environment } from '@environments/environment';
@@ -38,9 +38,9 @@ export class FileService {
     return (error: any) => observer.error(error);
   }
 
-  private onUploadComplete(observer: Subscriber<number>, file: File) {
+  private onUploadComplete(observer: Subscriber<File>, file: File) {
     return () => {
-      observer.next(file.size);
+      observer.next(file);
       observer.complete();
     };
   }

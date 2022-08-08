@@ -17,6 +17,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { AppRoutingModule } from '@app/app-routing.module';
 import { AdminComponent } from '@app/modules/admin/admin.component';
+import { SharedModule } from '@app/modules/shared/shared.module';
 import { CoreModule } from '@core/core.module';
 import { AddJockeyDialogComponent } from './jockey/add-jockey-dialog/add-jockey-dialog.component';
 import { JockeyComponent } from './jockey/jockey.component';
@@ -46,7 +47,8 @@ import { JockeyComponent } from './jockey/jockey.component';
     MatSidenavModule,
     MatTableModule,
     MatToolbarModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
