@@ -135,15 +135,15 @@ const generateSasKey = (connectionString, container, permissions) => {
 const getUploadUrl = filename => {
     const connectionString = process.env.BLOG_SERVICE_CONNECTION_STRING;
     const container = process.env.UPLOAD_BLOG_SERVICE_CONTAINER;
-    const permissions = 'c';
+    const permissions = 'w';
 
     const { url, sas } = generateSasKey(connectionString, container, permissions);
 
     return {
         originUrl: url,
-        fileUrl: `${url}/${container}/${filename}?${sas}`,
+        fileUrl: `${url}/${container}/${filename}`,
+        sasUrl: `${url}?${sas}`,
         filename,
-        sas,
         uploadContainer: container
     };
 };

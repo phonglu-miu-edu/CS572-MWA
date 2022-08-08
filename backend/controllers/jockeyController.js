@@ -28,8 +28,8 @@ const getJockeyById = async (req, res, next) => {
 
 const createJockey = async (req, res, next) => {
     try {
-        const { name, description, picture, dob } = req.body;
-        const item = await jockeyService.create({ name, description, picture, dob });
+        const { name, description, picture } = req.body;
+        const item = await jockeyService.create({ name, description, picture });
         res.json(item);
     } catch (err) {
         next(err);
@@ -43,7 +43,7 @@ const editJockey = async (req, res, next) => {
             id: id
         };
 
-        extractPatchParams(query, req.body, ['name', 'description', 'picture', 'dob' ]);
+        extractPatchParams(query, req.body, ['name', 'description', 'picture' ]);
 
         const item = await jockeyService.edit(query);
         res.json(item);

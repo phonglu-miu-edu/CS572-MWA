@@ -21,8 +21,7 @@ export class FileService {
 
   upload = (fileUploadSchema: AzureBlobFileModel, file: File): Observable<any> => {
     return new Observable(observer => {
-      const blobServiceClient = new BlobServiceClient("https://hora.blob.core.windows.net?si=All&sip=0.0.0.0&sv=2021-06-08&sr=c&sig=PzJI%2FBdjf2M%2BmeQoD2cfI9yj4FlNxPYEXsGW5m2ldTg%3D");
-      //`${fileUploadSchema.originUrl}?${fileUploadSchema.sas}`);
+      const blobServiceClient = new BlobServiceClient(fileUploadSchema.sasUrl);
       const containerClient = blobServiceClient.getContainerClient(fileUploadSchema.uploadContainer);
       const blockBlobClient = containerClient.getBlockBlobClient(fileUploadSchema.filename);
 

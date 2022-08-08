@@ -5,8 +5,7 @@ const { Schema } = mongoose;
 const JockeySchema = new Schema({
     name: { type: String, required: true },
     description: String,
-    picture: { type: String, required: true },
-    dob: Date
+    picture: { type: String, required: true }
 }, { timestamps: true });
 
 module.exports = generateModel('Jockey', JockeySchema);

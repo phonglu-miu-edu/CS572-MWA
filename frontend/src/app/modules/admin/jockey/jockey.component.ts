@@ -13,7 +13,7 @@ export class JockeyComponent {
   getJockeysSub!: Subscription;
   page = 1;
   pageSize = 10;
-  displayedColumns: string[] = ['name', 'picture', 'dob'];
+  displayedColumns: string[] = ['name', 'description', 'picture'];
   dataSource = [];
 
   constructor(private jockeyService: JockeyService, private dialog: MatDialog) {

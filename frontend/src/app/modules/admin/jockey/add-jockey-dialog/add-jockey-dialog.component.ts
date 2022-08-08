@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 
 export interface DialogData {
   name: string;
+  description: string;
   picture: string;
 }
 
