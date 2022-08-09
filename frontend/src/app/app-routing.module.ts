@@ -12,6 +12,7 @@ import { ProfileComponent } from './modules/admin/profile/profile.component';
 import { LoginComponent } from './modules/public/login/login.component';
 import { RegisterComponent } from './modules/public/register/register.component';
 
+
 const routes: Routes = [
   {
     path: '', component: HomeComponent

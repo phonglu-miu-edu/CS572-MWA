@@ -2,24 +2,11 @@ mat-card {
   margin-left: 10px;
   margin-bottom: 10px;
 }
-
-mat-card .col-md-10 mat-progress-bar {
-  height: 5px;
-  z-index: -23px;
+.leftc  {
+  position: absolute;
+  left: 0px;
 }
-
-mat-card .selecting {
-  bottom: 10px;
-}
-
-.col-md-10 img{
-  border-radius: 200px;
-  width: 3%;
-  height: 3%;
-  float: left;
-  margin-top: -30px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
+mat-grid-tile mat-progress-bar{
+  position: absolute;
+  bottom: 0px;
 }

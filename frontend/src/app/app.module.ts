@@ -27,6 +27,7 @@ import { ResultComponent } from './modules/admin/result/result.component';
 import { HomeComponent } from './modules/public/home/home.component';
 import { PublicModule } from './modules/public/public.module';
 import { SharedModule } from './modules/shared/shared.module';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { SharedModule } from './modules/shared/shared.module';
     PublicModule,
     AdminModule,
     MatMenuModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatGridListModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true }],
   bootstrap: [AppComponent]
