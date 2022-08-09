@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -30,17 +31,18 @@ import { FooterComponent } from './footer.component';
     HttpClientModule,
     ReactiveFormsModule,
     RouterModule,
-    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatIconModule,
-    MatCardModule,
-    MatButtonModule,
+    MatInputModule,
     MatListModule,
-    MatTableModule,
+    MatMenuModule,
     MatProgressBarModule,
     MatSelectModule,
     MatSidenavModule,
-    MatDialogModule
+    MatTableModule
   ]
 })
 export class CoreModule {

@@ -2,11 +2,8 @@ mat-card {
   margin-left: 10px;
   margin-bottom: 10px;
 }
-.leftc  {
-  position: absolute;
-  left: 0px;
-}
-mat-grid-tile mat-progress-bar{
+
+mat-grid-tile mat-progress-bar {
   position: absolute;
   bottom: 0px;
 }

@@ -1,14 +1,18 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import UserService from '@core/user/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-protected',
   template: `
     <style>
       mat-sidenav-content {
+        min-height: 400px;
         padding: 20px;
       }
     </style>
-    <mat-sidenav-container>
+    <mat-sidenav-container *ngIf="isLoggedIn">
       <mat-sidenav opened mode="side">
         <mat-nav-list>
           <a mat-list-item [routerLink]="['dashboard']"> Dashboard </a>
@@ -24,4 +28,16 @@ import { Component } from '@angular/core';
   `
 })
 export class AdminComponent {
+  isLoggedIn: boolean = false;
+  sub!: Subscription;
+
+  constructor(private router: Router, private userService: UserService) {
+    this.sub = userService.userState$.subscribe(userState => {
+      this.isLoggedIn = !!userState;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.sub.unsubscribe();
+  }
 }

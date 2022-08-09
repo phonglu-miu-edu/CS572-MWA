@@ -28,7 +28,8 @@ import { CoreModule } from '@core/core.module';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'admin',
+    component: AdminComponent,
     children: [
       {
         path: 'dashboard',

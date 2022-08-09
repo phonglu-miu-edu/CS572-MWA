@@ -27,6 +27,11 @@ tr.element-row:not(.expanded-row):active {
   border-bottom-width: 0;
 }
 
+.element-row.expanded-row+.detail-row .mat-column-expandedDetail {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
 .element-detail {
   overflow: hidden;
   display: flex;
@@ -38,7 +43,7 @@ tr.element-row:not(.expanded-row):active {
 
 .element-diagram {
   font-weight: lighter;
-  margin: 0 20px 10px 0;
+  margin: 0 20px 0 0;
 }
 
 .element-text {
