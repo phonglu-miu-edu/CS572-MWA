@@ -1,11 +1,12 @@
 mat-card {
-  margin: 10px;
+  margin-left: 10px;
+  margin-bottom: 10px;
 }
-
-mat-card .col-md-10 mat-progress-bar {
-  height: 5px;
+.leftc  {
+  position: absolute;
+  left: 0px;
 }
-
-mat-card .selecting {
-  bottom: 10px;
+mat-grid-tile mat-progress-bar{
+  position: absolute;
+  bottom: 0px;
 }

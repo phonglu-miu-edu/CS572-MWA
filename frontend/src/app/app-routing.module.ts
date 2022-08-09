@@ -10,6 +10,7 @@ import { HomeComponent } from './modules/public/home/home.component';
 import { LoginComponent } from './modules/public/login/login.component';
 import { RegisterComponent } from './modules/public/register/register.component';
 
+
 const routes: Routes = [
   {
     path: '', component: HomeComponent
