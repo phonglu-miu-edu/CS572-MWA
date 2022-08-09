@@ -5,7 +5,10 @@
         <a mat-button [routerLink]="'/'"><b> HORSE RACING SYSTEM </b></a>
       </h1>
       <span class="menu-spacer"></span>
-      <div class="menu-items">
+      <div class="menu-items" *ngIf="!isLoggedIn">
+        <button mat-button [routerLink]="['login']"> Login</button>
+      </div>
+      <div class="menu-items" *ngIf="isLoggedIn">
         <button mat-button [matMenuTriggerFor]="menu">
           {{fullname}} <mat-icon>arrow_drop_down</mat-icon>
         </button>
