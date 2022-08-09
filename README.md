@@ -21,3 +21,19 @@ The HoRa project is a grand betting system opened to let people bet on the horse
 - Angular Material for UI components and project layout.
 - Azure Blob Storage for the image hosting.
 - Public site on Github page or Azure.
+
+Tasks Division:
+
+Thursday and Friday: Project planning and discussion
+
+Phong Tai Lu:
+Coding for login/register.
+Login flow with JWT, authentication, and guards with backend. 
+Coding to manage the information about Jockeys/Horses/races.
+Link a create a login/register/Jockeys/Horses/races form with backend and proper validations.
+
+Binod Kathayat
+Create a Login/Register to add a new User/Admin.
+Create UI for Dashboard.
+Link Dashboard Component.
+Design Home page.
