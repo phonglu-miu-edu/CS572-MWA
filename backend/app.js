@@ -12,6 +12,7 @@ const fileRouter = require('./routers/fileRouter');
 const jockeyRouter = require('./routers/jockeyRouter');
 const horseRouter = require('./routers/horseRouter');
 const raceRouter = require('./routers/raceRouter');
+const cronRace = require('./crons/crobRace');
 
 // Init
 dotenv.config();
@@ -19,6 +20,8 @@ dotenv.config();
 const port = process.env.PORT || 80;
 const app = express();
 mongoose.connect(process.env.MONGODB);
+
+cronRace.initScheduledJobs();
 
 // Config
 app.disable('x-powered-by');

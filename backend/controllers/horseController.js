@@ -28,8 +28,8 @@ const getHorseById = async (req, res, next) => {
 
 const createHorse = async (req, res, next) => {
     try {
-        const { name, description, picture, breed, weight } = req.body;
-        const item = await horseService.create({ name, description, picture, breed, weight });
+        const { name, description, picture, breed, weight, jockey } = req.body;
+        const item = await horseService.create({ name, description, picture, breed, weight, jockey });
         res.json(item);
     } catch (err) {
         next(err);
@@ -43,7 +43,7 @@ const editHorse = async (req, res, next) => {
             id: id
         };
 
-        extractPatchParams(query, req.body, ['name', 'description', 'picture', 'breed', 'weight' ]);
+        extractPatchParams(query, req.body, ['name', 'description', 'picture', 'breed', 'weight', 'jockey' ]);
 
         const item = await horseService.edit(query);
         res.json(item);

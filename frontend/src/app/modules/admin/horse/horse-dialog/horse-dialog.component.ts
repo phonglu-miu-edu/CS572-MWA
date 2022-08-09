@@ -1,6 +1,8 @@
 import { Component, ElementRef, Inject, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import JockeyModel from '@app/modules/admin/jockey/jockey.model';
+import JockeyService from '@app/modules/admin/jockey/jockey.service';
 import SharedService from '@app/modules/shared/shared.service';
 import { FileService } from '@core/file/file.service';
 import { BehaviorSubject, Subscription } from 'rxjs';
@@ -12,6 +14,7 @@ export interface DialogData {
   picture: string;
   breed: string;
   weight: number;
+  jockey: JockeyModel;
 }
 
 @Component({
@@ -24,6 +27,7 @@ export class HorseDialogComponent {
   form: FormGroup;
   processing$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
+  getJockeysSub!: Subscription
   getFileUploadUrlSub!: Subscription;
   uploadSub!: Subscription;
 
@@ -70,12 +74,14 @@ export class HorseDialogComponent {
     "Westphalian",
     "Welsh Pony and Welsh Cob"
   ];
+  jockeys: JockeyModel[];
 
   constructor(
     private fb: FormBuilder,
     private fileService: FileService,
     public dialogRef: MatDialogRef<HorseDialogComponent>,
     public sharedService: SharedService,
+    public jockeyService: JockeyService,
     @Inject(MAT_DIALOG_DATA) public data: DialogData
   ) {
     this.form = fb.group({
@@ -84,8 +90,18 @@ export class HorseDialogComponent {
       description: data.description,
       picture: [data.picture, [Validators.required]],
       breed: [data.breed, [Validators.required]],
-      weight: [data.weight, [Validators.required]]
+      weight: [data.weight, [Validators.required]],
+      jockey: [data.jockey, [Validators.required]]
     });
+
+    this.getDataSource();
+  }
+
+  getDataSource = () => {
+    this.getJockeysSub = this.jockeyService.get(1, 20)
+      .subscribe(response => {
+        this.jockeys = response.data;
+      });
   }
 
   uploadFile = (event: Event) => {
@@ -126,6 +142,11 @@ export class HorseDialogComponent {
 
   onAddClick() {
     if (this.form.valid) {
+      // if (this.form.value.jockey) {
+      //   const { name, picture, _id } = this.form.value.jockey;
+      //   this.form.setValue({ jockey: { name, picture, _id } as JockeyModel });
+      // }
+
       this.onClose(this.form.value);
     }
   };
@@ -135,6 +156,10 @@ export class HorseDialogComponent {
   };
 
   onClose = (data?: DialogData): void => {
+    if (this.getJockeysSub) {
+      this.getJockeysSub.unsubscribe();
+    }
+
     if (this.getFileUploadUrlSub) {
       this.getFileUploadUrlSub.unsubscribe();
     }

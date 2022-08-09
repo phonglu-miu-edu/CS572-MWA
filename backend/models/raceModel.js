@@ -3,12 +3,15 @@ const { generateModel } = require('./baseModel');
 const { Schema, ObjectId } = mongoose;
 
 const RaceSchema = new Schema({
-    start_time: { type: Date, required: true },
-    description: String,
-    racers: [ {
-        number: { type: Number, required: true },
-        horse_id: { type: ObjectId, required: true },
-        id: { type: ObjectId, required: true }
+    start: { type: Date, required: true },
+    closed: Boolean,
+    horses: [ {
+        _id: { type: ObjectId, required: true },
+        name: { type: String, required: true },
+        picture: { type: String, required: true },
+        jockey: {
+            name: String
+        }
     } ]
 });
 

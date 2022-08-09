@@ -9,7 +9,6 @@ table {
 .picCol {
   max-width: 256px;
   max-height: 128px;
-  display: block;
 }
 
 tr.detail-row {
@@ -53,6 +52,14 @@ tr.element-row:not(.expanded-row):active {
   font-style: italic;
   margin-right: 10px;
   margin-bottom: 0;
+}
+
+.element-text h4 {
+  display: inline-block;
+  margin: 0;
+  font-style: italic;
+  font-weight: bold;
+  font-size: 0.8em;
 }
 
 .element-symbol {

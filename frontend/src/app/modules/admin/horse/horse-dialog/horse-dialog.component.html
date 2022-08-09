@@ -1,5 +1,5 @@
 <div [formGroup]="form">
-  <h1 mat-dialog-title>Add new jockey</h1>
+  <h1 mat-dialog-title>{{form.value.id ? 'Edit' : 'Add'}} horse</h1>
   <mat-dialog-content>
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>
@@ -20,6 +20,14 @@
     <mat-form-field appearance="fill">
       <mat-label>Weight (kg)</mat-label>
       <input matInput formControlName="weight" type="number" />
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Jockey</mat-label>
+      <mat-select formControlName="jockey">
+        <mat-option *ngFor="let jockey of jockeys" [value]="jockey">
+          {{jockey.name}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
     <div>
       <div class="uploadFileBlock">

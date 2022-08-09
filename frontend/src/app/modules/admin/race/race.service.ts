@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import HorseModel from '@app/modules/admin/horse/horse.model';
-import JockeyModel from '@app/modules/admin/jockey/jockey.model';
+import RaceModel from '@app/modules/admin/race/race.model';
 import ResponseModel from '@core/api/response.model';
 import { environment } from '@environments/environment';
 import { catchError, map, of } from 'rxjs';
@@ -9,29 +9,29 @@ import { catchError, map, of } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export default class HorseService {
+export default class RaceService {
   constructor(private http: HttpClient) {
   }
 
   get = (page: number, pageSize: number) => {
     // TODO: pageSize is fix for demo
-    return this.http.get<{ horses: HorseModel[] }>(`${environment.backendUrl}/horses/200/${page}`)
+    return this.http.get<{ races: RaceModel[] }>(`${environment.backendUrl}/races/200/${page}`)
       .pipe(
         map((data) => ({ data } as ResponseModel)),
         catchError(error => of({ error: error.message } as ResponseModel))
       );
   };
 
-  create = (name: string, description: string, picture: string, breed: string, weight: number, jockey: JockeyModel) => {
-    return this.http.post<{ horse: HorseModel }>(`${environment.backendUrl}/horses`, { name, description, picture, breed, weight, jockey }).pipe()
+  create = (start: Date, closed: boolean, horses: HorseModel[]) => {
+    return this.http.post<{ race: RaceModel }>(`${environment.backendUrl}/races`, { start: start.toUTCString(), closed, horses })
       .pipe(
         map((data) => ({ data } as ResponseModel)),
         catchError(error => of({ error: error.message } as ResponseModel))
       );
   }
 
-  edit = (id: string, name: string, description: string, picture: string, breed: string, weight: number, jockey: JockeyModel) => {
-    return this.http.patch<{ horse: HorseModel }>(`${environment.backendUrl}/horses/${id}`, { name, description, picture, breed, weight, jockey })
+  edit = (id: string, start: Date, closed: boolean, horses: HorseModel[]) => {
+    return this.http.patch<{ race: RaceModel }>(`${environment.backendUrl}/races/${id}`, { start: start.toUTCString(), closed, horses })
       .pipe(
         map((data) => ({ data } as ResponseModel)),
         catchError(error => of({ error: error.message } as ResponseModel))
@@ -39,7 +39,7 @@ export default class HorseService {
   }
 
   delete = (id: string) => {
-    return this.http.delete<{ horse: HorseModel }>(`${environment.backendUrl}/horses/${id}`)
+    return this.http.delete<{ race: RaceModel }>(`${environment.backendUrl}/races/${id}`)
       .pipe(
         map((data) => ({ data } as ResponseModel)),
         catchError(error => of({ error: error.message } as ResponseModel))

@@ -1,5 +1,5 @@
 <div [formGroup]="form">
-  <h1 mat-dialog-title>Add new jockey</h1>
+  <h1 mat-dialog-title>{{form.value.id ? 'Edit' : 'Add'}} jockey</h1>
   <mat-dialog-content>
     <mat-form-field appearance="fill">
       <mat-label>Name</mat-label>

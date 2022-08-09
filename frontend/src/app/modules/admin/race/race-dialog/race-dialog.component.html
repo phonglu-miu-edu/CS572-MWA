@@ -1,0 +1,45 @@
+<div [formGroup]="form">
+  <h1 mat-dialog-title>{{form.value.id ? 'Edit' : 'Add'}} race</h1>
+  <mat-dialog-content>
+    <mat-form-field>
+      <input matInput [ngxMatDatetimePicker]="picker" placeholder="Choose a date" formControlName="start">
+      <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+      <ngx-mat-datetime-picker #picker></ngx-mat-datetime-picker>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input matInput [hidden]="true">
+      <mat-checkbox formControlName="closed" name="closed">Closed?</mat-checkbox>
+    </mat-form-field>
+    <mat-form-field class="example-chip-list" appearance="fill">
+      <mat-label>Choose horses</mat-label>
+      <mat-chip-list #chipList aria-label="Horse selection">
+        <mat-chip
+          *ngFor="let horse of horses"
+          (removed)="remove(horse._id)">
+          {{horse.name}}
+          <button matChipRemove>
+            <mat-icon>cancel</mat-icon>
+          </button>
+        </mat-chip>
+        <input
+          placeholder="Choose..."
+          #horseInput
+          [formControl]="horseCtrl"
+          [matAutocomplete]="auto"
+          [matChipInputFor]="chipList"
+          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+          (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+        <mat-option *ngFor="let horse of filteredHorses | async" [value]="horse._id">
+          {{horse.name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-raised-button color="primary" [disabled]="!form.valid"
+            (click)="onAddClick()">{{form.value.id ? 'Edit' : 'Add'}}</button>
+    <button mat-button (click)="onCancelClick()">Cancel</button>
+  </mat-dialog-actions>
+</div>

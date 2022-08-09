@@ -65,8 +65,8 @@ export class HorseComponent {
 
     this.dialogSub = dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        const { name, description, picture, breed, weight } = result;
-        this.createHorseSub = this.horseService.create(name, description, picture, breed, weight)
+        const { name, description, picture, breed, weight, jockey } = result;
+        this.createHorseSub = this.horseService.create(name, description, picture, breed, weight, jockey)
           .subscribe(response => {
             this.getDataSource();
           });
@@ -79,9 +79,9 @@ export class HorseComponent {
 
     this.dialogSub = dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        const { name, description, picture, breed, weight } = result;
+        const { name, description, picture, breed, weight, jockey } = result;
 
-        this.editHorsesSub = this.horseService.edit(horse._id, name, description, picture, breed, weight)
+        this.editHorsesSub = this.horseService.edit(horse._id, name, description, picture, breed, weight, jockey)
           .subscribe(response => {
             this.getDataSource();
           });
