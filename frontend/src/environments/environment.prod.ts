@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  backendUrl: 'http://localhost:8081'
+  backendUrl: 'https://mwa-hora.herokuapp.com/'
 };
