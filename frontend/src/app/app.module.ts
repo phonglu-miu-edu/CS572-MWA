@@ -22,9 +22,7 @@ import { NavbarComponent } from '@core/navbar/navbar.component';
 import { AuthorizationInterceptor } from '@core/providers/authorization.interceptor';
 
 import { AppComponent } from './app.component';
-import { HistoryComponent } from './modules/admin/history/history.component';
 import { ProfileComponent } from './modules/admin/profile/profile.component';
-import { ResultComponent } from './modules/admin/result/result.component';
 import { PublicModule } from './modules/public/public.module';
 import { SharedModule } from './modules/shared/shared.module';
 
@@ -52,9 +50,7 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     NavbarComponent,
-    ProfileComponent,
-    ResultComponent,
-    HistoryComponent
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

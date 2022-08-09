@@ -22,7 +22,7 @@ export class RegisterComponent {
     const userState = this.userService.getUserState();
 
     if (userState) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['admin', 'dashboard']);
     }
   }
 

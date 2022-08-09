@@ -19,7 +19,7 @@ export class LoginComponent {
     const userState = this.userService.getUserState();
 
     if (userState) {
-      this.router.navigate(['/dashboard']);
+      this.router.navigate(['admin', 'dashboard']);
     }
   }
 
@@ -32,7 +32,7 @@ export class LoginComponent {
         } else {
           // TODO: toast success
           this.userService.persistState(response.data);
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['admin', 'dashboard']);
         }
       });
   }
