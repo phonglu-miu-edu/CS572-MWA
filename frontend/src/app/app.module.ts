@@ -14,51 +14,68 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule, Routes } from '@angular/router';
 import { AdminModule } from '@app/modules/admin/admin.module';
 import { CoreModule } from '@core/core.module';
+import { CheckTokenGuard } from '@core/guards/check-token.guard';
 import { NavbarComponent } from '@core/navbar/navbar.component';
 import { AuthorizationInterceptor } from '@core/providers/authorization.interceptor';
 
-import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DashboardComponent } from './modules/admin/dashboard/dashboard.component';
 import { HistoryComponent } from './modules/admin/history/history.component';
 import { ProfileComponent } from './modules/admin/profile/profile.component';
 import { ResultComponent } from './modules/admin/result/result.component';
-import { HomeComponent } from './modules/public/home/home.component';
 import { PublicModule } from './modules/public/public.module';
 import { SharedModule } from './modules/shared/shared.module';
+
+const routes: Routes = [
+  {
+    path: 'login',
+    loadChildren: () => import('./modules/public/login/login.module').then(m => m.LoginModule)
+  },
+  {
+    path: 'register',
+    loadChildren: () => import('./modules/public/register/register.module').then(m => m.RegisterModule)
+  },
+  {
+    path:  'admin',
+    loadChildren: () => import('./modules/admin/admin.module').then(m => m.AdminModule),
+    canActivate: [CheckTokenGuard]
+  },
+  {
+    path: '',
+    loadChildren: () => import('./modules/public/home/home.module').then(m => m.HomeModule)
+  },
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    DashboardComponent,
     NavbarComponent,
     ProfileComponent,
     ResultComponent,
     HistoryComponent
   ],
   imports: [
-    AppRoutingModule,
     BrowserModule,
     BrowserAnimationsModule,
-    MatInputModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatCardModule,
     MatButtonModule,
+    MatCardModule,
+    MatFormFieldModule,
+    MatGridListModule,
+    MatIconModule,
+    MatInputModule,
     MatListModule,
-    MatTableModule,
+    MatMenuModule,
     MatProgressBarModule,
     MatSelectModule,
+    MatTableModule,
+    MatToolbarModule,
     CoreModule,
     SharedModule,
     PublicModule,
     AdminModule,
-    MatMenuModule,
-    MatToolbarModule,
-    MatGridListModule
+    RouterModule.forRoot(routes)
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: AuthorizationInterceptor, multi: true }],
   bootstrap: [AppComponent]

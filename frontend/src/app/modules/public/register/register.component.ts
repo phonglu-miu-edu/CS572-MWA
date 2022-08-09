@@ -12,9 +12,9 @@ import { Subscription } from 'rxjs';
 export class RegisterComponent {
   registerSub!: Subscription;
   registerForm: FormGroup = this.fb.group({
-    email: ['admin@gmail.com', Validators.required],
-    password: ['MyP@ssword', Validators.required],
-    fullname: ['Phong Lu', Validators.required]
+    email: ['', Validators.required],
+    password: ['', Validators.required],
+    fullname: ['', Validators.required]
   });
 
   constructor(private router: Router, private fb: FormBuilder, private userService: UserService) {
@@ -22,8 +22,7 @@ export class RegisterComponent {
     const userState = this.userService.getUserState();
 
     if (userState) {
-      // TODO: remove this
-      // this.router.navigate(['dashboard']);
+      this.router.navigate(['/dashboard']);
     }
   }
 
@@ -33,15 +32,15 @@ export class RegisterComponent {
     }
   }
 
-  async submit() {
+  submit() {
     const { email, password, fullname } = this.registerForm.value;
     this.registerSub = this.userService.register(email, password, fullname)
       .subscribe((response: any) => {
         if (response.error) {
           // TODO: toast error
         } else {
-          // TODO: toast success, remove this
-          // this.router.navigate(['login']);
+          // TODO: toast success
+          this.router.navigate(['login']);
         }
       });
   }

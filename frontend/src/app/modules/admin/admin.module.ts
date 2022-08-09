@@ -21,30 +21,41 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { AppRoutingModule } from '@app/app-routing.module';
+import { RouterModule, Routes } from '@angular/router';
 import { AdminComponent } from '@app/modules/admin/admin.component';
-import { HorseDialogComponent } from '@app/modules/admin/horse/horse-dialog/horse-dialog.component';
-import { HorseComponent } from '@app/modules/admin/horse/horse.component';
-import { RaceDialogComponent } from '@app/modules/admin/race/race-dialog/race-dialog.component';
-import { RaceComponent } from '@app/modules/admin/race/race.component';
 import { SharedModule } from '@app/modules/shared/shared.module';
 import { CoreModule } from '@core/core.module';
-import { JockeyDialogComponent } from './jockey/jockey-dialog/jockey-dialog.component';
-import { JockeyComponent } from './jockey/jockey.component';
+
+const routes: Routes = [
+  {
+    path: '',
+    children: [
+      {
+        path: 'dashboard',
+        loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+      },
+      {
+        path: 'race',
+        loadChildren: () => import('./race/race.module').then(m => m.RaceModule)
+      },
+      {
+        path: 'horse',
+        loadChildren: () => import('./horse/horse.module').then(m => m.HorseModule)
+      },
+      {
+        path: 'jockey',
+        loadChildren: () => import('./jockey/jockey.module').then(m => m.JockeyModule)
+      }
+    ]
+  }
+];
 
 @NgModule({
   declarations: [
-    AdminComponent,
-    JockeyComponent,
-    JockeyDialogComponent,
-    HorseComponent,
-    HorseDialogComponent,
-    RaceComponent,
-    RaceDialogComponent,
+    AdminComponent
   ],
   imports: [
     CommonModule,
-    AppRoutingModule,
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
@@ -70,7 +81,8 @@ import { JockeyComponent } from './jockey/jockey.component';
     NgxMatNativeDateModule,
     NgxMatTimepickerModule,
     CoreModule,
-    SharedModule
+    SharedModule,
+    RouterModule.forChild(routes)
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
