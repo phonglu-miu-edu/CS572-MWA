@@ -29,9 +29,26 @@ The HoRa project is a grand horse race betting system opened to let anybody bet 
 
 ## Setup
 
-1. Clone this github repo.
+1. Clone this `github` repo.
 2. Copy and paste the `.env` file to the backend directory.
 3. The `backend` is setup with port `8080`.
 4. The `frontend` is setup with port `4200`, and recognize the backend url as `localhost:8080`, it could be changed be changing the value in `app/environments/environment.ts`
 5. Open new terminal, go to `backend` directory, and run the following commands: `npm install`, `npm start`.
 6. Open new terminal, go to `frontend` directory, and run the following commands: `yarn install`, `yarn start`.
+
+## Tasks
+
+Starts with the group's project planning and discussion.
+
+### Phong Lu
+Coding for login/register.
+Login flow with JWT, authentication, and guards with backend. 
+Coding to manage the information about Jockeys/Horses/races.
+Link a create a login/register/Jockeys/Horses/races form with backend and proper validations.
+
+### Binod Kathayat
+- Provide the UI template bases on the Angular Material UI.
+- Implement the Home Page UI.
+- Implement the Dashboard UI.
+- Link Dashboard Component.
+- Create the Login/Register UI design to add a new User/Admin, and login.
