@@ -13,9 +13,14 @@ The HoRa project is a grand horse race betting system opened to let anybody bet 
 - Manage the Jockeys.
 - Manage the Horses.
 - Manage the races with a number of horses and set the running time for them.
+- ~~Manage the history of races and the betting.~~
+- ~~Review all the races in realtime.~~
+- ~~Report of the income from races.~~
 
 3. The user functionalities:
-- ~~Bet on the horses of the races, and see the result on realtime events.~~
+- ~~See the realtime update of the races (with animation).~~
+- ~~Deposit/Withdraw the wallet.~~
+- ~~Report of the income from their betting races.~~
 
 4. Anonymous users:
 - ~~See the result on realtime events.~~
@@ -63,10 +68,10 @@ Starts with the group's project planning and discussion.
 
 ### The problem
 - We started by just the idea of creating a new project but not about the scopes of it. Then we struggle with the timeline is so narrow compares to so many requirements and features.
-- Lack of the resources is critical.
+- Lacking of the resources is critical.
 
 ### The solution
-- We managed to narrow down the scope of the project, to make it somehow good enough for presentation.
+- We managed to narrow down the scope of the project, to make it something good enough for presentation.
 - Push more time effort to the project.
 
 ### New things
